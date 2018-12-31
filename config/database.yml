@@ -1,0 +1,22 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  usename: dailson
+  password: 1234567890
+  # For details on connection pooling, see Rails configuration guide
+  # http://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: onebitflix_development
+
+test:
+  <<: *default
+  database: onebitflix_test
+
+production:
+  <<: *default
+  database: onebitflix_production
+  username: onebitflix
+  password: <%= ENV['ONEBITFLIX_DATABASE_PASSWORD'] %>
